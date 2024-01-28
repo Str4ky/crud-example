@@ -128,4 +128,4 @@ Vous pouvez aussi l'hoster sur votre propre site web/serveur
 
 __Crédits :__
 
-Banque d'icônes utilisés : <a href='https://fontawesome.com'>Font Awesome</a>
+Banque d'icônes utilisées : <a href='https://fontawesome.com'>Font Awesome</a>
