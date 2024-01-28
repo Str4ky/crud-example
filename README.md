@@ -103,7 +103,7 @@ Modifiez aussi les éléments des fichier `add/index.php` et `edit/index.php` (n
 </form>
 ```
 
-Et pour terminer modifier les requêtes en conséquences dans les fichier `add/add.php`, `edit/edit.php` et `delete/index.php`
+Et pour terminer modifiez les requêtes en conséquences dans les fichier `add/add.php`, `edit/edit.php` et `delete/index.php`
 
 Vous pouvez aussi rajouter des éléments via le menu de navigation (active étant la page actuelle)
 
