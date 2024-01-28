@@ -105,7 +105,7 @@ Modifiez aussi les éléments des fichier `add/index.php` et `edit/index.php` (n
 
 Et pour terminer modifiez les requêtes en conséquences dans les fichier `add/add.php`, `edit/edit.php` et `delete/index.php`
 
-Vous pouvez aussi rajouter des éléments via le menu de navigation (active étant la page actuelle)
+Vous pouvez aussi rajouter des éléments via le menu de navigation (la classe "active" étant la page actuelle)
 
 ```html
 <div class="sidenav">
