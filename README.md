@@ -85,7 +85,7 @@ while($row = $resultat->fetch()){
 }
 ```
 
-Modifiez aussi les éléments des fichier `add/index.php` et `edit/index.php`
+Modifiez aussi les éléments des fichier `add/index.php` et `edit/index.php` (n'oubliez pas les requpetes de base de données et les values pour la page d'édition)
 
 ```html
 <form action="add.php" method="POST">
