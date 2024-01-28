@@ -125,3 +125,7 @@ Utilisez un logiciel de wamp tel que [Wamp server](https://www.wampserver.com/) 
 Mettez le dossier du projet dans le dossier __www__ du logiciel de Wamp et lancer le projet depuis votre navigateur web
 <br><br>
 Vous pouvez aussi l'hoster sur votre propre site web/serveur
+
+__Crédits :__
+
+Banque d'icônes utilisés : <a href='https://fontawesome.com'>Font Awesome</a>
