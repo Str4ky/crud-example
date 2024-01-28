@@ -126,6 +126,8 @@ Mettez le dossier du projet dans le dossier __www__ du logiciel de Wamp et lance
 <br><br>
 Vous pouvez aussi l'hoster sur votre propre site web/serveur
 
+<br>
+
 __Crédits :__
 
 Banque d'icônes utilisées : <a href='https://fontawesome.com'>Font Awesome</a>
