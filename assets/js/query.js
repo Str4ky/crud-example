@@ -16,6 +16,7 @@ search.addEventListener("keydown", function(e) {
 
 //Fonction updateValue
 function updateValue(e) {
+    let element = filter.options[filter.selectedIndex].value;
     button.href = "?search=" + e.target.value + "&filter=" + element;
 };
 
