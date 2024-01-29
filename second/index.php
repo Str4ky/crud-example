@@ -35,8 +35,8 @@
         <h1 class="label"><i class="fa-solid fa-2 title-icon"></i> Seconds éléments</h1>
         <br>
         <div class="search">
-            <!-- Afficher le champ de recherche avec celui-ci si on a déja une recherche en cours -->
-            <input type="text" class="search" placeholder="Rechercher" name="search" id="search" value="<?php if(isset($_GET["search"])) { echo $_GET["search"]; } ?>"><a href="" id="button"><i class="fa-solid fa-search"></i></a>
+            <!-- Afficher le champ de recherche et de filtres avec ceux-ci si on a déja une recherche et un filtre en cours -->
+            Filtre : <select id="filter" onchange="updateFilter(this)"><option value="none">Aucun</option><option value="id" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "id") echo "selected"; ?>>ID</option><option value="name" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "name") echo "selected"; ?>>Nom</option><option value="description" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "description") echo "selected"; ?>>Description</option><option value="price" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "price") echo "selected"; ?>>Prix</option></select><input type="text" class="search" placeholder="Rechercher" name="search" id="search" value="<?php if(isset($_GET["search"])) { echo $_GET["search"]; } ?>"><a href="" id="button"><i class="fa-solid fa-search"></i></a>
         </div>
         <br><br>
         <table>
@@ -53,12 +53,22 @@
             #Définir le nombre d'éléments par page
             $total = 10;
             if(isset($_GET["search"])) {
-                #Définir la requête avec la recherche
-                $requete = $cnn->prepare("SELECT * FROM second WHERE name LIKE :search OR description LIKE :search OR price LIKE :search");
-                #Exécuter la requête
-                $requete->execute(['search' => '%'.$_GET["search"].'%']);
-                #Définir le résultat de la requête
-                $resultat = $requete;
+                if(isset($_GET["filter"]) && $_GET["filter"] != "none" && $_GET["filter"] != "") {
+                    #Définir la requête avec la recherche via le filtre
+                    $requete = $cnn->prepare("SELECT * FROM second WHERE {$_GET["filter"]} LIKE :search");
+                    #Exécuter la requête
+                    $requete->execute(['search' => '%'.$_GET["search"].'%']);
+                    #Définir le résultat de la requête
+                    $resultat = $requete;
+                }
+                else {
+                    #Définir la requête avec la recherche
+                    $requete = $cnn->prepare("SELECT * FROM second WHERE name LIKE :search OR description LIKE :search OR price LIKE :search");
+                    #Exécuter la requête
+                    $requete->execute(['search' => '%'.$_GET["search"].'%']);
+                    #Définir le résultat de la requête
+                    $resultat = $requete;
+                }
             }
             else {
                 #Si la page est définie et qu'elle est supérieure à 1
