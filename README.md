@@ -2,7 +2,7 @@
 
 Exemple d'interface CRUD en PHP
 
-<img src="assets/img/preview.png" alt="Prévisualisation">
+<img src="preview.png" alt="Prévisualisation">
 
 __Fonctionnalités :__
 
