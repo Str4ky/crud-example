@@ -110,7 +110,7 @@ Modifiez les requêtes en conséquences dans les fichier `add/add.php`, `edit/ed
 Et pour terminer en modifiant les filtres de recherche, modifiez simplement cette fonction en remplaçant les valeurs par celle de la table
 
 ```php
-Filtre : <select id="filter" onchange="updateFilter(this)"><option value="none">Aucun</option><option value="id" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "id") echo "selected"; ?>>ID</option> [...] </select>
+<select id="filter" onchange="updateFilter(this)"><option value="none">Aucun</option><option value="id" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "id") echo "selected"; ?>>ID</option> [...] </select>
 ```
 
 Vous pouvez aussi rajouter des éléments via le menu de navigation (la classe "active" étant la page actuelle)
