@@ -9,6 +9,7 @@ __Fonctionnalités :__
 <li>Création d'éléments</li>
 <li>Modification d'éléments</li>
 <li>Suppression d'éléments</li>
+<li>Recherche d'éléments</li>
 
 <br>
 
@@ -120,7 +121,7 @@ Vous pouvez aussi rajouter des éléments via le menu de navigation (la classe "
 
 __Test du projet :__
 
-Utilisez un logiciel de wamp tel que [Wamp server](https://www.wampserver.com/) par exemple
+Utilisez un logiciel de wamp tel que [Wamp server](https://www.wampserver.com) par exemple
 <br>
 Mettez le dossier du projet dans le dossier __www__ du logiciel de Wamp et lancer le projet depuis votre navigateur web
 <br><br>
