@@ -10,6 +10,7 @@ __Fonctionnalités :__
 <li>Modification d'éléments</li>
 <li>Suppression d'éléments</li>
 <li>Recherche d'éléments</li>
+<li>Filtrer les éléments par catégorie</li>
 
 <br>
 
@@ -104,7 +105,13 @@ Modifiez aussi les éléments des fichier `add/index.php` et `edit/index.php` (n
 </form>
 ```
 
-Et pour terminer modifiez les requêtes en conséquences dans les fichier `add/add.php`, `edit/edit.php` et `delete/index.php`
+Modifiez les requêtes en conséquences dans les fichier `add/add.php`, `edit/edit.php` et `delete/index.php`
+
+Et pour terminer en modifiant les filtres de recherche, modifiez simplement cette fonction en remplaçant les valeurs par celle de la table
+
+```php
+Filtre : <select id="filter" onchange="updateFilter(this)"><option value="none">Aucun</option><option value="id" <?php if(isset($_GET["filter"]) && $_GET["filter"] == "id") echo "selected"; ?>>ID</option> [...] </select>
+```
 
 Vous pouvez aussi rajouter des éléments via le menu de navigation (la classe "active" étant la page actuelle)
 
