@@ -2,8 +2,8 @@
     #Inclure la base de données
     include("../config/database.php");
 
-    #Rediriger vers la page d'accueil avec une variable de page page si celle-ci n'est pas définie
-    if(!isset($_GET["page"])) {
+    #Rediriger vers la page d'accueil avec une variable de page page si celle-ci n'est pas définie ou si la recherche est vide
+    if(!isset($_GET["page"]) && (!isset($_GET["search"]) || $_GET["search"] == "")) {
         header("Location: ?page=1");
     }
 ?>
@@ -34,6 +34,11 @@
     <div class="main">
         <h1 class="label"><i class="fa-solid fa-2 title-icon"></i> Seconds éléments</h1>
         <br>
+        <div class="search">
+            <!-- Afficher le champ de recherche avec celui-ci si on a déja une recherche en cours -->
+            <input type="text" class="search" placeholder="Rechercher" name="search" id="search" value="<?php if(isset($_GET["search"])) { echo $_GET["search"]; } ?>"><a href="" id="button"><i class="fa-solid fa-search"></i></a>
+        </div>
+        <br><br>
         <table>
         <thead>
         <tr>
@@ -46,20 +51,30 @@
         </thead>
         <?php
             #Définir le nombre d'éléments par page
-            $total = 12;
-            #Si la page est définie et qu'elle est supérieure à 1
-            if(isset($_GET["page"]) && $_GET["page"] > 1) {
-                #Définir l'ID de l'élément à partir duquel la requête va chercher les éléments
-                $id_page = ($total * ($_GET["page"] - 1) ) + 1;
-                #Définir la requête commençant à l'ID défini précédemment et limitée au nombre d'éléments par page
-                $requete = "SELECT * FROM second WHERE id >= $id_page ORDER BY id DESC LIMIT $total";
+            $total = 10;
+            if(isset($_GET["search"])) {
+                #Définir la requête avec la recherche
+                $requete = $cnn->prepare("SELECT * FROM second WHERE name LIKE :search OR description LIKE :search OR price LIKE :search");
+                #Exécuter la requête
+                $requete->execute(['search' => '%'.$_GET["search"].'%']);
+                #Définir le résultat de la requête
+                $resultat = $requete;
             }
             else {
-                #Définir la requête limitée au nombre d'éléments par page
-                $requete = "SELECT * FROM second ORDER BY id DESC LIMIT $total";
+                #Si la page est définie et qu'elle est supérieure à 1
+                if(isset($_GET["page"]) && $_GET["page"] > 1) {
+                    #Définir l'ID de l'élément à partir duquel la requête va chercher les éléments
+                    $id_page = ($total * ($_GET["page"] - 1) ) + 1;
+                    #Définir la requête commençant à l'ID défini précédemment et limitée au nombre d'éléments par page
+                    $requete = "SELECT * FROM second WHERE id >= $id_page ORDER BY id DESC LIMIT $total";
+                }
+                else {
+                    #Définir la requête limitée au nombre d'éléments par page
+                    $requete = "SELECT * FROM second ORDER BY id DESC LIMIT $total";
+                }
+                #Exécuter la requête
+                $resultat = $cnn->query($requete) or die(print_r($bdd->errorInfo()));
             }
-            #Exécuter la requête
-            $resultat = $cnn->query($requete) or die(print_r($bdd->errorInfo()));
             while($row = $resultat->fetch()){
                 #Afficher les éléments
                 $id = html_entity_decode($row['id']);
@@ -73,7 +88,7 @@
                 <td data-label='ID'>$id</td>
                 <td data-label='Name'>$name</td>
                 <td data-label='Description'>$description</td>
-                <td data-label='Price'>$price</td>
+                <td data-label='Price'>$price €</td>
                 <td data-label='Actions'>
                 <a href='edit?id=$id' class='edit'><i class='fa-solid fa-pen table-icon'></i></a>
                 <a href='delete?id=$id' class='delete'><i class='fa-solid fa-trash table-icon'></i></a>
@@ -126,3 +141,5 @@
     </div>
 </body>
 </html>
+<!-- Inclure le script de recherche -->
+<script src="../assets/js/query.js"></script>

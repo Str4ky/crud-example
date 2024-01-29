@@ -178,3 +178,31 @@ input[type=text], input[type=number] {
     float: left;
     margin-left: 82px;
 }
+
+.search {
+    align-items: center;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search input[type=text] {
+    display: inline-block;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    width: 75%;
+}
+
+.search a {
+    display: inline-block;
+    background-color: #262626;
+    color:#ccc;
+    text-decoration: none;
+    padding: 11px;
+}
+
+.search a:hover {
+    background-color: #333333;
+    cursor: pointer;
+}
