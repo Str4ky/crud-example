@@ -24,7 +24,7 @@
     <div class="main">
         <h1><i class="fa-solid fa-wrench title-icon"></i> CRUD Example</h1>
         <br>
-        <p>Bienvenue danc cet exemple d'interface <b>C</b>reate <b>R</b>read <b>U</b>pdate <b>D</b>elete</p>
+        <p>Bienvenue danc cet exemple d'interface <b>C</b>reate <b>R</b>ead <b>U</b>pdate <b>D</b>elete</p>
         <p>Vous pouvez modifier l'acceuil comme bon vous semble</p>
     </div>
 </body>
